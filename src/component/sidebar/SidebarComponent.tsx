@@ -10,7 +10,7 @@ export const SliderBarComponents = () => {
                     <ul className="space-y-4 mt-6">
                         <li className="flex items-center p-4 hover:bg-blue-800">
                             <span className="material-icons mr-3">
-                                <Link to="/dashboard" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
+                                <Link to="/" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
                                 DashBoard
                             </Link>
                             </span>

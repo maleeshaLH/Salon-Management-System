@@ -2,6 +2,7 @@ import './App.css'
 import {createBrowserRouter, RouterProvider} from "react-router";
 import {RootLayoutComponent} from "./component/sidebar/RootLayoutComponent.tsx";
 import Dashboard from "./pages/DashBoard.tsx";
+import CustomerPage from "./pages/CustomerPage.tsx";
 
 function App() {
 
@@ -10,7 +11,8 @@ function App() {
             path: "/",
             element:<RootLayoutComponent/>,
             children:[
-                {path: '/dashboard', element:<Dashboard/>}
+                {path: '/', element:<Dashboard/>},
+                {path:'/customer',element:<CustomerPage/>}
             ]
         }
     ])
