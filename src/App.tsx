@@ -3,6 +3,10 @@ import {createBrowserRouter, RouterProvider} from "react-router";
 import {RootLayoutComponent} from "./component/sidebar/RootLayoutComponent.tsx";
 import Dashboard from "./pages/DashBoard.tsx";
 import CustomerPage from "./pages/CustomerPage.tsx";
+import EmployeePage from "./pages/EmployeePage.tsx";
+import AppointmentPage from "./pages/AppointmentPage.tsx";
+import PaymentPage from "./pages/PaymentPage.tsx";
+import ServicePage from "./pages/ServicePage.tsx";
 
 function App() {
 
@@ -12,7 +16,12 @@ function App() {
             element:<RootLayoutComponent/>,
             children:[
                 {path: '/', element:<Dashboard/>},
-                {path:'/customer',element:<CustomerPage/>}
+                {path:'/customer',element:<CustomerPage/>},
+                {path:'/employee',element:<EmployeePage/>},
+                {path:'/appointment',element:<AppointmentPage/>},
+                {path:'/payment',element:<PaymentPage/>},
+                {path:'/service',element:<ServicePage/>}
+
             ]
         }
     ])

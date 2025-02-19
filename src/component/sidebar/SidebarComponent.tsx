@@ -46,8 +46,8 @@ export const SliderBarComponents = () => {
                         </li>
                         <li className="flex items-center p-4 hover:bg-blue-800">
                             <span className="material-icons mr-3">
-                                <Link to="/supplier" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
-                                Supplier
+                                <Link to="/service" className="custom-link hover:bg-blue-500 px-3 py-2 rounded">
+                                Service
                             </Link>
                             </span>
                         </li>
