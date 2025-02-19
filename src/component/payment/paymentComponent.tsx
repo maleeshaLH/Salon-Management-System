@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import {deletePayment, getAllPayment, savePayment, updatePayment} from "../../reducers/PaymentReducer.tsx";
 import {Payment} from "../../models/payment.ts";
+import {getAllAppointment} from "../../reducers/AppointmentReducer.tsx";
 
 const PaymentManagement = () => {
     const [showModal, setShowModal] = useState(false);
@@ -17,13 +18,18 @@ const PaymentManagement = () => {
     const [paymentDate, setPymentDate] = useState<Date>(new Date());
     const [amount, setAmount] = useState(0);
 
-
     const dispatch = useDispatch<AppDispatch>();
     const payments = useSelector((state: any) => state.payment);
+    const appointments = useSelector((state: any) => state.appointments);
+
 
     useEffect(() => {
         dispatch(getAllPayment());
     }, [dispatch,payments.length]);
+
+    useEffect(() => {
+        dispatch(getAllAppointment());
+    }, [dispatch]);
 
     const resetForm = () => {
         setPaymentId("")
@@ -126,15 +132,30 @@ const PaymentManagement = () => {
                                     className="w-full mt-1 px-3 py-2 border rounded bg-gray-100"
                                 />
                             </div>
+                            {/*<div className="mb-4">*/}
+                            {/*    <label className="block text-gray-700"> Appointment Id</label>*/}
+                            {/*    <input*/}
+                            {/*        type="text"*/}
+                            {/*        placeholder="Enter id"*/}
+                            {/*        value={appointmentId}*/}
+                            {/*        onChange={(e) => setAppointmentId(e.target.value)}*/}
+                            {/*        className="w-full mt-1 px-3 py-2 border rounded"*/}
+                            {/*    />*/}
+                            {/*</div>*/}
                             <div className="mb-4">
-                                <label className="block text-gray-700"> Appointment Id</label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter id"
+                                <label className="block text-gray-700">Appointment Id</label>
+                                <select
                                     value={appointmentId}
                                     onChange={(e) => setAppointmentId(e.target.value)}
-                                    className="w-full mt-1 px-3 py-2 border rounded"
-                                />
+                                    className="w-full mt-1 px-3 py-2 border rounded bg-white"
+                                >
+                                    <option value="">Select an Appointment</option>
+                                    {appointments.map((appointment: any) => (
+                                        <option key={appointment.appointmentId} value={appointment.appointmentId}>
+                                            {appointment.appointmentId}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
                             <div className="mb-4 relative">
                                 <label className="block text-gray-700">Date</label>
@@ -172,7 +193,6 @@ const PaymentManagement = () => {
                                     className="w-full mt-1 px-3 py-2 border rounded"
                                 />
                             </div>
-
 
 
                             <button type="button" onClick={handleSave}
