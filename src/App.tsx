@@ -7,6 +7,9 @@ import EmployeePage from "./pages/EmployeePage.tsx";
 import AppointmentPage from "./pages/AppointmentPage.tsx";
 import PaymentPage from "./pages/PaymentPage.tsx";
 import ServicePage from "./pages/ServicePage.tsx";
+import {HomePage} from "./pages/HomePage.tsx";
+import {SignInPage} from "./pages/SignInPage.tsx";
+import {SignUpPage} from "./pages/SignUpPage.tsx";
 
 function App() {
 
@@ -15,7 +18,10 @@ function App() {
             path: "/",
             element:<RootLayoutComponent/>,
             children:[
-                {path: '/', element:<Dashboard/>},
+                {path:'/',element:<HomePage/>},
+                {path:'/signIn',element:<SignInPage/>},
+                {path:'/signUp',element:<SignUpPage/>},
+                {path: '/dashboard', element:<Dashboard/>},
                 {path:'/customer',element:<CustomerPage/>},
                 {path:'/employee',element:<EmployeePage/>},
                 {path:'/appointment',element:<AppointmentPage/>},
@@ -27,19 +33,7 @@ function App() {
     ])
   return (
       <>
-          {/*<div className="bg-gray-100 min-h-screen flex items-center justify-center">*/}
-          {/*    <div className="bg-white shadow-lg rounded-2xl p-6 max-w-sm">*/}
-          {/*        <h1 className="text-2xl font-bold text-center text-blue-600">*/}
-          {/*            Welcome to Tailwind with React!*/}
-          {/*        </h1>*/}
-          {/*        <p className="text-gray-600 mt-4 text-center">*/}
-          {/*            This is a simple React app styled with TailwindCSS.*/}
-          {/*        </p>*/}
-          {/*        <button className="mt-6 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">*/}
-          {/*            Click Me*/}
-          {/*        </button>*/}
-          {/*    </div>*/}
-          {/*</div>*/}
+
           <RouterProvider router={routers}/>
       </>
   )

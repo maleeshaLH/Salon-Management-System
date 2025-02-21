@@ -4,6 +4,7 @@ import employeeReducer from "../reducers/EmployeeReducer.tsx";
 import appointmentReducer from "../reducers/AppointmentReducer.tsx";
 import paymentReducer from "../reducers/PaymentReducer.tsx";
 import serviceReducer from "../reducers/ServiceReducer.tsx";
+import userReducer from "../reducers/UserReducer.tsx";
 
 export const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
         appointments: appointmentReducer,
         payment: paymentReducer,
         service: serviceReducer,
+        user: userReducer,
     }
 });
 
