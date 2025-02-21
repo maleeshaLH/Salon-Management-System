@@ -19,3 +19,77 @@ model Customer {
   email String
   phone Int
 }
+
+model Employee {
+  employeeId   String @id
+  employeeName String
+  email        String
+  phone        Int
+  designation  String
+  salary       Int
+}
+
+model Appointment {
+  appointmentId String   @id
+  date          DateTime
+  time          String
+  serviceType   String
+  customerId    String
+  employeeId    String
+}
+
+model Payment {
+  paymentId     String   @id
+  appointmentId String
+  paymentDate   DateTime
+  amount        Int
+}
+
+model Service {
+  serviceId String @id
+  name      String
+  duration  String
+  price     Int
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String @unique
+  email    String @unique
+  password String
+}
+
+// model Customer {
+//   id          String        @id @default(uuid())
+//   name        String
+//   email       String
+//   phone       Int
+//   appointments Appointment[] // One-to-Many relationship
+// }
+//
+// model Employee {
+//   employeeId   String        @id @default(uuid())
+//   employeeName String
+//   email        String
+//   phone        Int
+//   designation  String
+//   salary       Int
+//   appointments Appointment[] // One-to-Many relationship
+// }
+//
+// model Appointment {
+//   appointmentId String   @id @default(uuid())
+//   date          DateTime
+//   time          String
+//   serviceType   String
+//
+//   // Foreign keys
+//   customerId    String
+//   employeeId    String
+//
+//   // Relationships
+//   customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+//   employee Employee @relation(fields: [employeeId], references: [employeeId], onDelete: Cascade)
+// }
+
+// npx prisma migrate dev --name add_appointment_relations
