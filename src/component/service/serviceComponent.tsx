@@ -67,6 +67,7 @@ const ServiceManagement = () => {
         }
     };
 
+
     return (
         <div className="ml-64 w-full p-5">
             <header className="flex justify-between items-center mb-5">
@@ -136,11 +137,20 @@ const ServiceManagement = () => {
                                     className="w-full mt-1 px-3 py-2 border rounded"
                                 />
                             </div>
+                            {/*<div className="mb-4">*/}
+                            {/*    <label className="block text-gray-700">Duration</label>*/}
+                            {/*    <input*/}
+                            {/*        type="text"*/}
+                            {/*        placeholder="Enter Duration"*/}
+                            {/*        value={duration}*/}
+                            {/*        onChange={(e) => setDuration(e.target.value)}*/}
+                            {/*        className="w-full mt-1 px-3 py-2 border rounded"*/}
+                            {/*    />*/}
+                            {/*</div>*/}
                             <div className="mb-4">
                                 <label className="block text-gray-700">Duration</label>
                                 <input
-                                    type="text"
-                                    placeholder="Enter Duration"
+                                    type="time"
                                     value={duration}
                                     onChange={(e) => setDuration(e.target.value)}
                                     className="w-full mt-1 px-3 py-2 border rounded"
@@ -152,7 +162,7 @@ const ServiceManagement = () => {
                                     type="text"
                                     placeholder="Enter Price"
                                     value={price}
-                                    onChange={(e) => setPrice(e.target.value)}
+                                    onChange={(e) => setPrice(Number(e.target.value))}
                                     className="w-full mt-1 px-3 py-2 border rounded"
                                 />
                             </div>
