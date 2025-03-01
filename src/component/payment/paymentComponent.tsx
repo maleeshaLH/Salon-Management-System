@@ -160,7 +160,7 @@ const PaymentManagement = () => {
                             <div className="mb-4 relative">
                                 <label className="block text-gray-700">Date</label>
                                 <div
-                                    className="w-full mt-1 px-3 py-2 border rounded cursor-pointer bg-white"
+                                    className="w-full mt-1 px-3 py-4 border rounded cursor-pointer bg-white"
 
                                     onClick={() => setShowCalendar(!showCalendar)}
                                 >

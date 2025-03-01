@@ -1,20 +1,18 @@
 import SliderBarComponents from "../component/sidebar/SidebarComponent.tsx";
-import CustomerManagement from "../component/customer/customerComponent.tsx";
+import AppointmentManagement from "../component/appointment/appointmentComponent.tsx";
 
-export  const CustomerPage =() => {
+export const AppointmentPage = () =>{
     return (
         <>
             <div className="flex w-4/5">
                 <SliderBarComponents/>
                 <div className="flex-grow p-1">
-                    <CustomerManagement/>
-
+                    <AppointmentManagement/>
                 </div>
-
 
 
             </div>
         </>
     )
-};
-export default CustomerPage;
+}
+export default AppointmentPage;

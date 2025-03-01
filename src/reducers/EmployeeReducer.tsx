@@ -32,6 +32,18 @@ export const getAllEmployee = createAsyncThunk(
     }
 );
 
+export const getAllEmployeeCount = createAsyncThunk(
+    'employee/getAllEmployeeCount',
+    async () => {
+        try {
+            const response = await api.get('/getAllCount');
+            return response.data;
+        } catch (error) {
+            return console.log('error',error)
+        }
+    }
+);
+
 export const  deleteEmployee = createAsyncThunk(
     'employee/deleteEmployee',
     async (id:string)=> {
@@ -115,7 +127,17 @@ export  const customerSlice = createSlice({
 
                 }
             })
-
+        builder
+            .addCase(getAllEmployeeCount.pending,(state,action) =>{
+                console.log("pending",action.payload)
+            })
+            .addCase(getAllEmployeeCount.rejected,(state,action) =>{
+                console.log("rejected",action.payload)
+            })
+            .addCase(getAllEmployeeCount.fulfilled,(state,action) =>{
+                console.log("fulfilled",action.payload)
+                return action.payload
+            })
 
     }
 })

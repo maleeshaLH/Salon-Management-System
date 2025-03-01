@@ -4,14 +4,17 @@ import ServiceManagement from "../component/service/serviceComponent.tsx";
 export const ServicePage = () =>{
     return (
         <>
-            <div className="flex w-4/5">
-                <SliderBarComponents/>
-                <div className="flex-grow p-1">
-                   <ServiceManagement/>
+            <div className="flex  h-screen">
+                <div className="flex w-4/5">
+                    <SliderBarComponents/>
+                    <div className="flex-grow p-5">
+                        <ServiceManagement/>
+                    </div>
+
+
                 </div>
-
-
             </div>
+
         </>
     )
 }

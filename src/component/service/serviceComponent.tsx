@@ -69,13 +69,13 @@ const ServiceManagement = () => {
 
 
     return (
-        <div className="ml-64 w-full p-5">
+        <div className="ml-30 w-full p-20 ">
             <header className="flex justify-between items-center mb-5">
-                <h1 className="text-2xl font-bold">Service Management </h1>
+                <h1 className="text-3xl font-bold">Service Management </h1>
                 <button onClick={handleAddClick} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add Service</button>
             </header>
 
-            <table className="w-full border-collapse border border-gray-300">
+            <table className="w-full p-2 border-collapse border border-gray-300">
                 <thead>
                 <tr>
                     <th className="border p-3 bg-gray-100">ID</th>
@@ -128,7 +128,7 @@ const ServiceManagement = () => {
                             </div>
 
                             <div className="mb-4">
-                                <label className="block text-gray-700"> Name</label>
+                                <label className="block text-gray-700"> Type</label>
                                 <input
                                     type="text"
                                     placeholder="Enter Type"
@@ -137,24 +137,18 @@ const ServiceManagement = () => {
                                     className="w-full mt-1 px-3 py-2 border rounded"
                                 />
                             </div>
-                            {/*<div className="mb-4">*/}
-                            {/*    <label className="block text-gray-700">Duration</label>*/}
-                            {/*    <input*/}
-                            {/*        type="text"*/}
-                            {/*        placeholder="Enter Duration"*/}
-                            {/*        value={duration}*/}
-                            {/*        onChange={(e) => setDuration(e.target.value)}*/}
-                            {/*        className="w-full mt-1 px-3 py-2 border rounded"*/}
-                            {/*    />*/}
-                            {/*</div>*/}
                             <div className="mb-4">
                                 <label className="block text-gray-700">Duration</label>
-                                <input
-                                    type="time"
+                                <select
                                     value={duration}
                                     onChange={(e) => setDuration(e.target.value)}
                                     className="w-full mt-1 px-3 py-2 border rounded"
-                                />
+                                >
+                                    <option value="00:30">30 Minutes</option>
+                                    <option value="01:00">1 Hour</option>
+                                    <option value="01:30">1 Hour 30 Minutes</option>
+                                    <option value="02:00">2 Hours</option>
+                                </select>
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700"> Price</label>

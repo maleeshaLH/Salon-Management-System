@@ -32,6 +32,18 @@ export const getAllService = createAsyncThunk(
     }
 );
 
+export const getAllServiceCount = createAsyncThunk(
+    'service/getAllServiceCount',
+    async () => {
+        try {
+            const response = await api.get('/getAllCount');
+            return response.data;
+        } catch (error) {
+            return console.log('error',error)
+        }
+    }
+);
+
 export const  deleteService = createAsyncThunk(
     'service/deleteService',
     async (id:string)=> {
@@ -113,7 +125,17 @@ export  const serviceSlice = createSlice({
                 }
                 alert(action.payload)
             })
-
+        builder
+            .addCase(getAllServiceCount.pending,(state,action) =>{
+                console.log("pending",action.payload)
+            })
+            .addCase(getAllServiceCount.rejected,(state,action) =>{
+                console.log("rejected",action.payload)
+            })
+            .addCase(getAllServiceCount.fulfilled,(state,action) =>{
+                console.log("fulfilled",action.payload)
+                return action.payload
+            })
 
     }
 })

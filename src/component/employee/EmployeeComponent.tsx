@@ -5,12 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import {deleteEmployee, getAllEmployee, saveEmployee, updateEmployee} from "../../reducers/EmployeeReducer.tsx";
 import {Employee} from "../../models/employee.ts";
+import {getAllService} from "../../reducers/ServiceReducer.tsx";
 
 const EmployeeManagement = () => {
 
     const dispatch = useDispatch<AppDispatch>();
     // @ts-ignore
     const employees = useSelector((state) => state.employees);
+    const services = useSelector((state: any) => state.service);
 
     const [showModal, setShowModal] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
@@ -27,7 +29,9 @@ const EmployeeManagement = () => {
         dispatch(getAllEmployee());
     }, [dispatch,employees.length]);
 
-
+    useEffect(() => {
+        dispatch(getAllService());
+    }, [dispatch]);
 
     const resetForm = () => {
         setEmployeeId("");
@@ -35,7 +39,7 @@ const EmployeeManagement = () => {
         setEmail("");
         setPhone(0);
         setDesignation("")
-        setEmployeeId("");
+        setSalary(0);
     };
 
     const handleAddClick = () => {
@@ -91,7 +95,7 @@ const EmployeeManagement = () => {
                     <th className="border p-3 bg-gray-100">Name</th>
                     <th className="border p-3 bg-gray-100">Email</th>
                     <th className="border p-3 bg-gray-100">Phone Number</th>
-                    <th className="border p-3 bg-gray-100">Designation</th>
+                    <th className="border p-3 bg-gray-100">Service Type</th>
                     <th className="border p-3 bg-gray-100">Salary</th>
                     <th className="border p-3 bg-gray-100">Actions</th>
                 </tr>
@@ -175,15 +179,30 @@ const EmployeeManagement = () => {
                                 />
                             </div>
 
+                            {/*<div className="mb-4">*/}
+                            {/*    <label className="block text-gray-700">Service Type</label>*/}
+                            {/*    <input*/}
+                            {/*        type="text"*/}
+                            {/*        placeholder="Enter designation"*/}
+                            {/*        value={designation}*/}
+                            {/*        onChange={(e) => setDesignation(e.target.value)}*/}
+                            {/*        className="w-full mt-1 px-3 py-2 border rounded"*/}
+                            {/*    />*/}
+                            {/*</div>*/}
                             <div className="mb-4">
-                                <label className="block text-gray-700">Designation</label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter designation"
+                                <label className="block text-gray-700">Service Type</label>
+                                <select
                                     value={designation}
                                     onChange={(e) => setDesignation(e.target.value)}
-                                    className="w-full mt-1 px-3 py-2 border rounded"
-                                />
+                                    className="w-full mt-1 px-3 py-2 border rounded bg-white"
+                                >
+                                    <option value="">Select an Type</option>
+                                    {services.map((service: any) => (
+                                        <option key={service.serviceId} value={service.name}>
+                                            {service.name}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
                             <div className="mb-4">
                                 <label className="block text-gray-700">Salary</label>
