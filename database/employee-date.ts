@@ -31,6 +31,14 @@ export async function getAllEmployee(){
         return error;
     }
 }
+export async function getAllEmployeeCount(){
+    try {
+        return await prisma.employee.count()
+
+    }catch (error){
+        return error;
+    }
+}
 
 export async function deleteEmployee(id:string){
     try {

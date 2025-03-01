@@ -7,6 +7,7 @@ import paymentRouter from "./router/paymentRouter";
 import dotenv from "dotenv";
 import userRouter, {authenticateToken} from "./router/userRouter";
 import cors from 'cors'
+import clientRouter, {authenticateClientToken} from "./router/clientRouter";
 
 dotenv.config();
 
@@ -21,11 +22,13 @@ app.use(express.json())
 //     next();
 // })
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173','http://localhost:8081'],
     methods: ['GET', 'POST','PUT','DELETE'],
     credentials: true,
 }));
+
 console.log("Loaded SECRET_KEY:", process.env.SECRET_KEY);
+console.log("Loaded MOBILE_SECRET_KEY",process.env.MOBILE_SECRET_KEY)
 
 app.listen(3001, ()=>{
     console.log("Server running on port 3001");
@@ -36,7 +39,9 @@ app.use('/employee',employeeRouter)
 app.use('/appointment',appointmentRouter)
 app.use('/service',serviceRouter)
 app.use('/payment',paymentRouter)
-
+app.use('/client',clientRouter)
 app.use('/user',userRouter)
+
 app.use(authenticateToken)
+app.use(authenticateClientToken)
 

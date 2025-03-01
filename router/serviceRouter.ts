@@ -2,7 +2,7 @@ import express from 'express'
 import {addAppointment, deleteAppointment, getAllAppointment, updateAppointment} from "../database/appointment-data";
 import {deleteEmployee, updateEmployee} from "../database/employee-date";
 import {Service} from "@prisma/client";
-import {addService, deleteService, getAllService, updateService} from "../database/service-data";
+import {addService, deleteService, getAllService, getAllServiceCounts, updateService} from "../database/service-data";
 
 const  router = express.Router();
 
@@ -14,6 +14,15 @@ router.get('/getAll', async (req,res) =>{
 
     try {
         res.json(await getAllService())
+    }catch (error){
+        console.log("error get All Service "+error)
+    }
+})
+
+router.get('/getAllCount', async (req,res) =>{
+
+    try {
+        res.json(await getAllServiceCounts())
     }catch (error){
         console.log("error get All Service "+error)
     }

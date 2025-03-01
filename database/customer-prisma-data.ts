@@ -21,25 +21,33 @@ export async function addCustomer(customer :Customer){
 
 }
 
-// export async function getAllCustomer(){
-//     try {
-//         return await prisma.customer.findMany()
-//
-//     }catch (error){
-//         return error;
-//     }
-// }
-//
-// export async function deleteCustomer(id:number){
-//     try {
-//         await prisma.customer.delete({
-//             where:{id: id}
-//         })
-//         return 'Customer Delete Successfully'
-//     }catch (error){
-//         return error
-//     }
-// }
+export async function getAllCustomer(){
+    try {
+        return await prisma.customer.findMany()
+
+    }catch (error){
+        return error;
+    }
+}
+export async function getAllCustomerCount(){
+    try {
+        return await prisma.customer.count()
+
+    }catch (error){
+        return error;
+    }
+}
+
+export async function deleteCustomer(id:string){
+    try {
+        await prisma.customer.delete({
+            where:{id: id}
+        })
+        return 'Customer Delete Successfully'
+    }catch (error){
+        return error
+    }
+}
 // export async function updateCustomer(id: number, customer: Customer){
 //     try{
 //         await prisma.customer.update({

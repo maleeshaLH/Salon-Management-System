@@ -31,6 +31,15 @@ export async function getAllService(){
     }
 }
 
+export async function getAllServiceCounts(){
+    try {
+        return await prisma.service.count()
+
+    }catch (error){
+        return error;
+    }
+}
+
 export async function deleteService(id:string){
     try {
         await prisma.service.delete({

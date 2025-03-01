@@ -1,5 +1,5 @@
 import express from 'express'
-import {addEmployee, deleteEmployee, getAllEmployee} from "../database/employee-date";
+import {addEmployee, deleteEmployee, getAllEmployee, getAllEmployeeCount} from "../database/employee-date";
 import {getAllCustomer} from "../database/customer-prisma-data";
 
 const  router = express.Router();
@@ -12,6 +12,15 @@ router.get('/getAll', async (req,res) =>{
 
     try {
         res.json(await getAllEmployee())
+    }catch (error){
+        console.log("error get All Employee "+error)
+    }
+})
+
+router.get('/getAllCount', async (req,res) =>{
+
+    try {
+        res.json(await getAllEmployeeCount())
     }catch (error){
         console.log("error get All Employee "+error)
     }

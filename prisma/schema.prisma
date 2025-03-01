@@ -14,14 +14,14 @@ datasource db {
 }
 
 model Customer {
-  id    String @id
+  id    String @id @default(uuid())
   name  String
-  email String
+  email String @unique
   phone Int
 }
 
 model Employee {
-  employeeId   String @id
+  employeeId   String @id @default(uuid())
   employeeName String
   email        String
   phone        Int
@@ -30,7 +30,7 @@ model Employee {
 }
 
 model Appointment {
-  appointmentId String   @id
+  appointmentId String   @id @default(uuid())
   date          DateTime
   time          String
   serviceType   String
@@ -39,14 +39,14 @@ model Appointment {
 }
 
 model Payment {
-  paymentId     String   @id
+  paymentId     String   @id @default(uuid())
   appointmentId String
   paymentDate   DateTime
   amount        Int
 }
 
 model Service {
-  serviceId String @id
+  serviceId String @id @default(uuid())
   name      String
   duration  String
   price     Int
@@ -56,6 +56,14 @@ model User {
   id       Int    @id @default(autoincrement())
   username String @unique
   email    String @unique
+  password String
+}
+
+model Client {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  phone    Int
   password String
 }
 
